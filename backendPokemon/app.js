@@ -7,7 +7,14 @@ app.use((req, res, next) => {
     next();
   });
 
-  app.get('/api/pokemons/', (req, res) => {
+app.use(express.json());
+app.post('/api/pokemons', (req, res) => {
+    res.status(201).json({
+        message: 'Objet créé !'
+      })
+  })
+
+app.get('/api/pokemons/', (req, res) => {
     const pokemons = [
         {
          id: 1,
