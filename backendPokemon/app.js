@@ -17,7 +17,7 @@ app.post('/api/pokemons', (req, res) => {
 app.get('/api/pokemons/', (req, res) => {
     const pokemons = [
         {
-         id: 1,
+         id: 0,
          name: "Bulbizarre",
          hp: 25,
          cp: 5,
