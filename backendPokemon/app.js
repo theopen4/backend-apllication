@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const Thing = require('./models/thing')
 const mongoose = require('mongoose');
 mongoose.mongoose.connect('mongodb+srv://Theopen:ezekiel1234@clusterpokemon.mi2uckb.mongodb.net/?retryWrites=true&w=majority',
 { useNewUrlParser: true,
@@ -15,10 +16,17 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.post('/api/pokemons', (req, res) => {
-    res.status(201).json({
-        message: 'Objet créé !'
-      })
-  })
+  delete req.body._id;
+  const thing = new Thing({
+  ...req.body
+  });
+  thing.save()
+    .then(() => {
+      res.status(201).json({message: 'Pokemon enregistred'});
+    })
+    .catch(error => res.status(400).json({error}));
+    
+})
 
 app.get('/api/pokemons/', (req, res) => {
     const pokemons = [
