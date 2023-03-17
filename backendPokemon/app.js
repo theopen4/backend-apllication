@@ -28,7 +28,7 @@ app.post('/api/pokemons', (req, res) => {
     
 })
 app.get('/api/pokemons/:id', (req, res) => {
-  Thing.findOne({id: req.params.id})
+  Thing.findOne({ id: req.params.id})
      .then(things => res.status(200).json(things))
      .catch(error => res.status(404).json({error}));
 })
