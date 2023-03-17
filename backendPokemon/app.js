@@ -16,39 +16,21 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.post('/api/pokemons', (req, res) => {
-  delete req.body._id;
+  delete req.body.id;
   const thing = new Thing({
-     ...req.body
+       ...req.body
   });
   thing.save()
     .then(() => {
-      res.status(201).json({message: 'Pokemon enregistred'});
+      res.status(201).json({thing, message: 'Pokemon enregistred'});
     })
     .catch(error => res.status(400).json({error}));
     
 })
 
 app.get('/api/pokemons/', (req, res) => {
-    const pokemons = [
-        {
-         id: 0,
-         name: "Bulbizarre",
-         hp: 25,
-         cp: 5,
-         picture: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png",
-         types: ["Plante", "Poison"],
-         created: new Date()
-        },
-        {
-         id: 2,
-         name: "Salamèche",
-         hp: 28,
-         cp: 6,
-         picture: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png",
-         types: ["Feu"],
-         created: new Date()
-        }
-    ]    
-    res.status(200).json(pokemons);
-  })
+  Thing.find()
+      .then(things => res.status(200).json(things))
+      .catch(error => res.status(400).json({error}));  
+  });
 module.exports = app;
