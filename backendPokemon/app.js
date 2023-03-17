@@ -18,7 +18,7 @@ app.use(express.json());
 app.post('/api/pokemons', (req, res) => {
   delete req.body._id;
   const thing = new Thing({
-  ...req.body
+     ...req.body
   });
   thing.save()
     .then(() => {
