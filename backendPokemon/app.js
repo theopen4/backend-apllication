@@ -32,6 +32,11 @@ app.put('/api/pokemons/:id', (req,  res) => {
       .then(() => res.status(200).json({message: 'objet modifie'}))
       .catch(error => res.status(400).json({error}))
 });
+app.delete('/api/pokemons/:id', (req, res, next) => {
+  Thing.deleteOne({ _id: req.params.id })
+    .then(() => res.status(200).json({ message: 'Objet supprimé !'}))
+    .catch(error => res.status(400).json({ error }));
+});
 app.get('/api/pokemons/:id', (req, res) => {
   Thing.findOne({ _id: req.params.id})
      .then(things => res.status(200).json(things))
