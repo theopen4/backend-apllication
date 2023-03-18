@@ -27,12 +27,17 @@ app.post('/api/pokemons', (req, res) => {
     .catch(error => res.status(400).json({error}));
     
 })
+app.put('/api/pokemons/:id', (req,  res) => {
+  Thing.updateOne({_id: req.params.id}, { ...req.body, _id: req.params.id})
+      .then(() => res.status(200).json({message: 'objet modifie'}))
+      .catch(error => res.status(400).json({error}))
+});
 app.get('/api/pokemons/:id', (req, res) => {
-  Thing.findOne({ id: req.params.id})
+  Thing.findOne({ _id: req.params.id})
      .then(things => res.status(200).json(things))
      .catch(error => res.status(404).json({error}));
 })
-app.get('/api/pokemons/', (req, res) => {
+app.use('/api/pokemons/', (req, res) => {
   Thing.find()
       .then(things => res.status(200).json(things))
       .catch(error => res.status(400).json({error}));  
