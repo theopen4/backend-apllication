@@ -28,7 +28,7 @@ router.post('/api/pokemons', (req, res) => {
        .then(things => res.status(200).json(things))
        .catch(error => res.status(404).json({error}));
   })
-  router.use('/api/pokemons/', (req, res) => {
+  router.get('/api/pokemons/', (req, res) => {
     Thing.find()
         .then(things => res.status(200).json(things))
         .catch(error => res.status(400).json({error}));  
