@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const Thing = require('./models/thing')
 const mongoose = require('mongoose');
+const userRoutes = require('./routes/user');
 const pokemonRoutes = require('./routes/pokemons')
 mongoose.mongoose.connect('mongodb+srv://Theopen:ezekiel1234@clusterpokemon.mi2uckb.mongodb.net/?retryWrites=true&w=majority',
 { useNewUrlParser: true,
@@ -17,6 +18,7 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use('/api/pokemons', pokemonRoutes);
+app.use('/api/auth', userRoutes);
 
 
 module.exports = app;
