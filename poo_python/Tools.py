@@ -1,4 +1,4 @@
-class Rectangle:
+class ToolsBox:
     def __init__(self, tool):
         self.tool = tool
 
