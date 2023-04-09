@@ -2,7 +2,7 @@ class Hammer:
     def __init__(self, color):
         self.color = color
 
-    def paint(self, color):
+    def paint(self, color="red"):
         pass
 
     def hammer_in(self, nail):

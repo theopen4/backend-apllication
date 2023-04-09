@@ -1,6 +1,7 @@
 class ToolsBox:
-    def __init__(self, tool):
-        self.tool = tool
+
+    def __init__(self):
+        self.tool = []
 
     def add_tool(self, tool):
         pass    
@@ -8,3 +9,5 @@ class ToolsBox:
     def remove_tool(self, tool):
         pass
         
+
+"""d"""
