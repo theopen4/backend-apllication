@@ -1,12 +1,13 @@
 class ToolsBox:
 
     def __init__(self):
-        self.tool = []
+        self.tools = []
 
     def add_tool(self, tool):
-        pass    
+        self.tools.append(tool)  
 
     def remove_tool(self, tool):
-        pass
+        index = self.tools.index(tool)
+        del self.tools[index]
         
 
